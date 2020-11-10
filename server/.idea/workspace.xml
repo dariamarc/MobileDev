@@ -20,11 +20,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7fd8ade-3f5f-4211-a8a3-4c7468459254" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../firstAndroid/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ionic1/src/todo/ElementList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/server.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ionic1/src/core/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ionic1/src/todo/Movie.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ionic1/src/todo/MovieEdit.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ionic1/src/todo/MovieList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ionic1/src/todo/MovieProps.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ionic1/src/todo/MovieProvider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ionic1/src/todo/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ionic1/src/todo/movieApi.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../firstAndroid/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../firstAndroid/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ionic1/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ionic1/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ionic1/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ionic1/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ionic1/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ionic1/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ionic1/src/pages/Home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ionic1/src/pages/Home.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ionic1/src/todo/ElementList.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ionic1/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ionic1/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/main.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +70,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.13.1" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.14.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ionic1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../my-node-server" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -70,6 +85,8 @@
       <updated>1603718592609</updated>
       <workItem from="1603718593686" duration="4838000" />
       <workItem from="1603793494558" duration="2165000" />
+      <workItem from="1604941693911" duration="5059000" />
+      <workItem from="1605002252978" duration="3100000" />
     </task>
     <servers />
   </component>
@@ -89,10 +106,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1603793595482">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1605006094231">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1603793595482" />
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1605006094231" />
     <state x="769" y="43" key="RollbackChangesDialog" timestamp="1603718672985">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
