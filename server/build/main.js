@@ -95,11 +95,9 @@ module.exports =
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-//using require to include modules
-//Koa - web framework
 const Koa = __webpack_require__(/*! koa */ "koa");
 
-const app = new Koa(); //http module
+const app = new Koa();
 
 const server = __webpack_require__(/*! http */ "http").createServer(app.callback());
 
@@ -107,7 +105,7 @@ const WebSocket = __webpack_require__(/*! ws */ "ws");
 
 const wss = new WebSocket.Server({
   server
-}); //for routing
+});
 
 const Router = __webpack_require__(/*! koa-router */ "koa-router");
 
@@ -141,47 +139,37 @@ class Movie {
     id,
     name,
     director,
-    date
+    year
   }) {
     this.id = id;
     this.name = name;
     this.director = director;
-    this.date = date;
+    this.year = year;
   }
 
 }
 
 const movies = [];
 movies.push(new Movie({
-  id: 1,
+  id: '1',
   name: 'The Shawshank Redemption',
   director: 'Frank Darabont',
-  date: new Date(1994, 9, 14)
+  year: 1994
 }));
 movies.push(new Movie({
-  id: 2,
+  id: '2',
   name: 'The Godfather',
   director: 'Francis Ford Coppola',
-  date: new Date(1972, 2, 24)
+  year: 1972
 }));
 movies.push(new Movie({
-  id: 3,
+  id: '3',
   name: 'Pulp Fiction',
   director: 'Quentin Tarantino',
-  date: new Date(1994, 9, 14)
+  year: 1994
 }));
-let lastUpdated = movies[movies.length - 1].date;
-let lastId = movies[movies.length - 1].id;
-const pageSize = 10;
-
-const broadcast = data => wss.clients.forEach(client => {
-  if (client.readyState === WebSocket.OPEN) {
-    client.send(JSON.stringify(data));
-  }
-});
-
 const router = new Router();
-router.get('/movie', ctx => {
+router.get('/movies', ctx => {
   const ifModifiedSince = ctx.request.get('If-Modified-Since');
 
   if (ifModifiedSince && new Date(ifModifiedSince).getTime() >= lastUpdated.getTime() - lastUpdated.getMilliseconds()) {
@@ -190,135 +178,61 @@ router.get('/movie', ctx => {
     return;
   }
 
-  const text = ctx.request.query.text;
-  const page = parseInt(ctx.request.query.page) || 1;
-  ctx.response.set('Last-Modified', lastUpdated.toUTCString());
-  const sortedItems = movies //.filter(element => name ? element.name.indexOf(name) !== -1 : true)
-  .sort((n1, n2) => -(n1.date.getTime() - n2.date.getTime()));
-  const offset = (page - 1) * pageSize;
   ctx.response.body = movies;
   ctx.response.status = 200;
 });
-router.get('/movie/:id', async ctx => {
-  const elemId = ctx.request.params.id;
-  const element = movies.find(elem => elemId === element.id);
+router.get('movies/:id', async ctx => {
+  const movieID = ctx.request.params.id;
+  const movie = movies.find(movie => movieID === movie.id);
 
-  if (element) {
-    ctx.response.body = element;
-    ctx.response.status = 200; // ok
+  if (movie) {
+    ctx.response.body = movie;
+    ctx.response.status = 200;
   } else {
     ctx.response.body = {
       issue: [{
-        warning: `movie with id ${elemId} not found`
+        warning: `The movie with id ${movieID} was not found!`
       }]
     };
-    ctx.response.status = 404; // NOT FOUND (if you know the resource was deleted, then return 410 GONE)
+    ctx.response.status = 404;
+  }
+});
+let lastInsertedIdx = 0;
+const moviesToAdd = [new Movie({
+  id: '4',
+  name: 'The Dark Night',
+  director: 'Cristopher Nolan',
+  year: 2008
+}), new Movie({
+  id: '5',
+  name: '12 Angry Men',
+  director: 'Sidney Lumet',
+  year: 1957
+}), new Movie({
+  id: '6',
+  name: 'Fight Club',
+  director: 'David Fincher',
+  year: 1999
+})];
+
+const broadcast = data => wss.clients.forEach(client => {
+  if (client.readyState === WebSocket.OPEN) {
+    client.send(JSON.stringify(data));
   }
 });
 
-const createMovie = async ctx => {
-  const element = ctx.request.body;
-
-  if (!element.name) {
-    ctx.response.body = {
-      issue: [{
-        error: 'Name is missing'
-      }]
-    };
-    ctx.response.status = 400;
-    return;
-  }
-
-  element.id = `${parseInt(lastId) + 1}`;
-  lastId = element.id;
-  movies.push(element);
-  ctx.response.body = element;
-  ctx.response.status = 201;
-  broadcast({
-    event: 'created',
-    payload: {
-      element
-    }
-  });
-};
-
-router.post('/movie', async ctx => {
-  await createMovie(ctx);
-});
-router.put('/movie/:id', async ctx => {
-  const id = ctx.params.id;
-  const element = ctx.request.body;
-  const elemId = element.id;
-
-  if (elemId && id !== element.id) {
-    ctx.response.body = {
-      issue: [{
-        error: `Param id and body id should be the same`
-      }]
-    };
-    ctx.response.status = 400;
-    return;
-  }
-
-  if (!elemId) {
-    await createMovie(ctx);
-    return;
-  }
-
-  const index = movies.findIndex(element => element.id === id);
-
-  if (index === -1) {
-    ctx.response.body = {
-      issue: [{
-        error: `element with id ${id} not found`
-      }]
-    };
-    ctx.response.status = 400;
-    return;
-  }
-
-  movies[index] = element;
-  lastUpdated = new Date();
-  ctx.response.body = element;
-  ctx.response.status = 200;
-  broadcast({
-    event: 'updated',
-    payload: {
-      element
-    }
-  });
-});
-router.del('/movie/:id', ctx => {
-  const id = ctx.params.id;
-  const index = movies.findIndex(element => id === element.id);
-
-  if (index !== -1) {
-    const element = movies[index];
-    movies.splice(index, 1);
-    lastUpdated = new Date();
-    broadcast({
-      event: 'deleted',
-      payload: {
-        element
-      }
-    });
-  }
-
-  ctx.response.status = 204;
-});
 setInterval(() => {
-  lastUpdated = new Date();
-  lastId = `${parseInt(lastId) + 1}`;
-  const movie = new Movie({
-    id: lastId,
-    name: `movie ${lastId}`,
-    date: lastUpdated,
-    director: `director ${lastId}`
-  }); //movies.push(movie);
-  //console.log(`
-  //${movie.name}`);
-  //broadcast({ event: 'created', payload: { movie } });
-}, 15000);
+  let movie = moviesToAdd[lastInsertedIdx];
+  movies.push(movie);
+  lastInsertedIdx = lastInsertedIdx + 1;
+  if (lastInsertedIdx >= moviesToAdd.length) lastInsertedIdx = 0;
+  broadcast({
+    event: 'movie added',
+    payload: {
+      movies: movies
+    }
+  });
+}, 10000);
 app.use(router.routes());
 app.use(router.allowedMethods());
 server.listen(3000);
@@ -332,7 +246,7 @@ server.listen(3000);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\marc_\Documents\Mobile dev\server\src/index.js */"./src/index.js");
+module.exports = __webpack_require__(/*! C:\Users\marc_\Documents\MobileDev\server\src/index.js */"./src/index.js");
 
 
 /***/ }),
