@@ -80,11 +80,12 @@ const broadcast = data =>
             client.send(JSON.stringify(data));
         }
     });
-
+let newId = 4;
 setInterval(() => {
-    let movie = moviesToAdd[lastInsertedIdx];
+    let movie = new Movie({id: newId, name: 'Movie ' + newId, director: 'Director ' + newId, year: 2008});
     movies.push(movie);
     lastInsertedIdx = lastInsertedIdx + 1;
+    newId = newId + 1;
     if(lastInsertedIdx >= moviesToAdd.length)
         lastInsertedIdx = 0;
     broadcast({event: 'movie added', payload: {movies: movies}});

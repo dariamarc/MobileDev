@@ -20,8 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7fd8ade-3f5f-4211-a8a3-4c7468459254" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../ionic1/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ionic1/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ionic1/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ionic1/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/main.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/main.map" afterDir="false" />
@@ -57,9 +55,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.13.1" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.14.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../my-node-server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -78,6 +77,10 @@
       <workItem from="1605718370510" duration="5273000" />
       <workItem from="1606046258481" duration="482000" />
       <workItem from="1606049274174" duration="5236000" />
+      <workItem from="1606072328564" duration="1204000" />
+      <workItem from="1606134211319" duration="2026000" />
+      <workItem from="1606155018895" duration="834000" />
+      <workItem from="1606165425961" duration="131000" />
     </task>
     <servers />
   </component>
@@ -97,13 +100,17 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1606061191382">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1606141017010">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1606061191382" />
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1606141017010" />
     <state x="769" y="43" key="RollbackChangesDialog" timestamp="1603718672985">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="769" y="43" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1603718672985" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1606134502370">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1606134502370" />
   </component>
 </project>
