@@ -3,5 +3,9 @@ export interface MovieProps {
     name: string;
     director: string;
     year: string;
-    userId: string;
+    userID: string;
+    version: string;
+    photoURL: string;
+    lat?: number;
+    lng?: number;
 }

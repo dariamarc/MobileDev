@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.example.masterandroid.R
+import com.example.masterandroid.auth.data.AuthRepository
 import com.example.masterandroid.core.TAG
 import kotlinx.android.synthetic.main.fragment_movie_list.*
 
@@ -41,6 +43,10 @@ class MovieListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         Log.i(TAG, "onActivityCreated")
+        if(!AuthRepository.isLoggedIn){
+            findNavController().navigate(R.id.fragment_login);
+            return;
+        }
         setupMovieList()
     }
 
@@ -65,7 +71,7 @@ class MovieListFragment : Fragment() {
 
             }
         }
-        moviesModel.loadMovies()
+        moviesModel.refresh()
     }
 
     override fun onDestroy() {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { MovieDetails, MovieList } from './todo';
+import { MovieDetails, MovieList } from './movies';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,7 +22,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import { MovieProvider } from './todo/MovieProvider';
+import { MovieProvider } from './movies/MovieProvider';
 import { AuthProvider, Login, PrivateRoute } from './auth';
 
 const App: React.FC = () => (
@@ -33,7 +33,8 @@ const App: React.FC = () => (
                     <Route path="/login" component={Login} exact={true}/>
                     <MovieProvider>
                         <PrivateRoute path="/movies" component={MovieList} exact={true}/>
-                        <PrivateRoute path="/movies/:id" component={MovieDetails} exact={true}/>
+                        <PrivateRoute component={MovieDetails} path={"/movie"} exact={true}/>
+                        <PrivateRoute path="/movies/:_id" component={MovieDetails} exact={true}/>
                     </MovieProvider>
                     <Route exact path="/" render={() => <Redirect to="/movies"/>}/>
                 </AuthProvider>

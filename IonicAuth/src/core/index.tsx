@@ -34,3 +34,11 @@ export const authConfig = (token?: string) => ({
         Authorization: `Bearer ${token}`
     }
 });
+
+export const conflictConfig = (token?: string, version?:string) => ({
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+        'If-Modified-Since':`${version}`
+    }
+});

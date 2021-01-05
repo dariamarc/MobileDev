@@ -7,11 +7,7 @@ export interface AuthProps {
     token: string;
 }
 
-export const login: (username?: string, password?: string) => Promise<AuthProps> = (username, password) => {
-    const response: Promise<AuthProps> = withLogs(axios.post(authUrl, { username, password }, config), 'login');
-    response.then(props => {localStorage.setItem("user", props.token);
-        //console.log('Added token to local storage ' + props.token);
-    });
-
-    return response;
-}
+export const login: (username?: string, password?: string) => Promise<AuthProps> = ((username, password) => {
+    let response = axios.post(authUrl, { username, password }, config);
+    return withLogs(response, 'login');
+})

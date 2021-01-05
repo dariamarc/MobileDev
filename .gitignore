@@ -1,4 +1,4 @@
-server/node_modules
+server
 my-node-server
 my-ionic-app
 MyBasicActivity
@@ -8,3 +8,9 @@ ionicPagingFilteringApp
 ionicStorageApp
 my-ionic-app-auth
 my-node-server-auth
+server-auth-2
+lab1
+firstAndroid
+firstIonic
+MasterAndroid
+MyBasicActivityAuth

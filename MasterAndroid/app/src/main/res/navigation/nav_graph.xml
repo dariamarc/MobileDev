@@ -6,6 +6,12 @@
     app:startDestination="@id/MovieListFragment">
 
     <fragment
+        android:id="@+id/fragment_login"
+        android:name="com.example.masterandroid.auth.login.LoginFragment"
+        android:label="@string/login"
+        tools:layout="@layout/fragment_login" />
+
+    <fragment
         android:id="@+id/MovieListFragment"
         android:name="com.example.masterandroid.todo.movies.MovieListFragment"
         android:label="Movie List"

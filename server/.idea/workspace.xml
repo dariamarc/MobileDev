@@ -20,10 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7fd8ade-3f5f-4211-a8a3-4c7468459254" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../IonicAuth/src/auth/AuthProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../IonicAuth/src/auth/AuthProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IonicAuth/src/auth/PrivateRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../IonicAuth/src/auth/PrivateRoute.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IonicAuth/src/auth/authApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../IonicAuth/src/auth/authApi.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MasterAndroid/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MasterAndroid/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/main.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +82,8 @@
       <workItem from="1606134211319" duration="2026000" />
       <workItem from="1606155018895" duration="834000" />
       <workItem from="1606165425961" duration="131000" />
+      <workItem from="1606212602295" duration="621000" />
+      <workItem from="1606734445217" duration="29000" />
     </task>
     <servers />
   </component>
@@ -100,10 +103,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1606141017010">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1606212626875">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1606141017010" />
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1606212626875" />
     <state x="769" y="43" key="RollbackChangesDialog" timestamp="1603718672985">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

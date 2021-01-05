@@ -13,6 +13,7 @@ import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.example.masterandroid.R
 import com.example.masterandroid.core.TAG
+import com.example.masterandroid.todo.data.Movie
 import kotlinx.android.synthetic.main.fragment_movie_details.*
 
 /**
@@ -25,6 +26,7 @@ class MovieDetailsFragment : Fragment() {
 
     private lateinit var viewModel: MovieDetailsViewModel
     private var movieId: String? = null
+    private var movie: Movie? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,12 +66,6 @@ class MovieDetailsFragment : Fragment() {
 
     private fun setupViewModel() {
         viewModel = ViewModelProvider(this).get(MovieDetailsViewModel::class.java)
-        viewModel.movie.observe(viewLifecycleOwner) { movie ->
-            Log.v(TAG, "update movies")
-            textview_name.text = movie.name
-            textview_director.text = movie.director
-            textview_year.text = movie.year
-        }
         viewModel.fetching.observe(viewLifecycleOwner) { fetching ->
             Log.v(TAG, "update fetching")
             progress.visibility = if (fetching) View.VISIBLE else View.GONE
@@ -92,8 +88,16 @@ class MovieDetailsFragment : Fragment() {
             }
         })
         val id = movieId
-        if (id != null) {
-            viewModel.loadMovie(id)
+        if (id == null) {
+            movie = Movie("", "", "", "")
+        } else {
+            viewModel.getMovieById(id).observe(viewLifecycleOwner) {
+                Log.v(TAG, "update items")
+                if (it != null) {
+                    movie = it
+                    textview_name.setText(it.name)
+                }
+            }
         }
     }
 }

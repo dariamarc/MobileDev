@@ -1,16 +1,15 @@
 package com.example.masterandroid.todo.movie
 
+import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.masterandroid.core.TAG
 import com.example.masterandroid.todo.data.Movie
 import com.example.masterandroid.todo.data.MovieRepository
+import com.example.masterandroid.todo.data.local.MovieDatabase
 import kotlinx.coroutines.launch
 
-class MovieDetailsViewModel : ViewModel(){
+class MovieDetailsViewModel(application: Application) : AndroidViewModel(application){
     private val mutableMovie = MutableLiveData<Movie>().apply { value =
         Movie("", "", "", "")
     }
@@ -18,25 +17,18 @@ class MovieDetailsViewModel : ViewModel(){
     private val mutableCompleted = MutableLiveData<Boolean>().apply { value = false }
     private val mutableException = MutableLiveData<Exception>().apply { value = null }
 
-    val movie: LiveData<Movie> = mutableMovie
     val fetching: LiveData<Boolean> = mutableFetching
     val fetchingError: LiveData<Exception> = mutableException
     val completed: LiveData<Boolean> = mutableCompleted
 
-    fun loadMovie(movieId: String) {
-        viewModelScope.launch {
-            Log.i(TAG, "loadMovie...")
-            mutableFetching.value = true
-            mutableException.value = null
-            try {
-                mutableMovie.value = MovieRepository.load(movieId)
-                Log.i(TAG, "loadMovie succeeded")
-                mutableFetching.value = false
-            } catch (e: Exception) {
-                Log.w(TAG, "loadMovie failed", e)
-                mutableException.value = e
-                mutableFetching.value = false
-            }
-        }
+    val movieRepository: MovieRepository
+
+    init {
+        val movieDao = MovieDatabase.getDatabase(application, viewModelScope).movieDao()
+        movieRepository = MovieRepository(movieDao)
+    }
+
+    fun getMovieById(movieId: String): LiveData<Movie> {
+        return movieRepository.getById(movieId)
     }
 }

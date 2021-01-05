@@ -1,6 +1,32 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 
+#username, #password, #name, #director, #year{
+  border: solid dodgerblue 2px;
+  margin-top: 10px;
+  width: 50%;
+}
+
+.mapBtn{
+  margin-top: 100px;
+}
+
+.conflictTitle{
+  margin-top: 100px;
+  text-decoration: red underline;
+}
+
+.photoCard{
+  width:30%;
+  height: 30%;
+}
+
+.listImg{
+  width:10%;
+  height: 90%;
+  float: right;
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
