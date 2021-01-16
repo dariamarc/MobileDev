@@ -26,7 +26,7 @@ import {conflicts, MovieContext} from './MovieProvider';
 import {MovieProps} from './MovieProps';
 import {AuthContext} from "../auth";
 import {useNetwork} from "../core/useNetworkState";
-import {add, cloud, cloudOffline} from "ionicons/icons";
+import {add, cloud, cloudOffline, notifications} from "ionicons/icons";
 import ConflictingMovie from "./ConflictingMovie";
 
 const log = getLogger('MovieList');
