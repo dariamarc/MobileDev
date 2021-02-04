@@ -74,21 +74,21 @@ export const MovieProvider: React.FC<MovieProviderProps> = ({ children }) => {
     useEffect(getMoviesEffect, []);
     useEffect(wsEffect, []);
 
-    async function getMoviesCallback() {
-        try {
-            log('fetchMovies started');
-            dispatch({type: FETCH_MOVIES_STARTED});
-            const fetchedMovies = await (getAllMovies());
-            log('fetch movies succeded');
-            dispatch({type: FETCH_MOVIES_SUCCEEDED, payload: {movie: fetchedMovies}});
-        } catch (error) {
-            log('fetchMovies failed');
-            dispatch({type: FETCH_MOVIES_FAILED, payload: {error}});
-        }
-    }
+    // async function getMoviesCallback() {
+    //     try {
+    //         log('fetchMovies started');
+    //         dispatch({type: FETCH_MOVIES_STARTED});
+    //         const fetchedMovies = await (getAllMovies());
+    //         log('fetch movies succeded');
+    //         dispatch({type: FETCH_MOVIES_SUCCEEDED, payload: {movie: fetchedMovies}});
+    //     } catch (error) {
+    //         log('fetchMovies failed');
+    //         dispatch({type: FETCH_MOVIES_FAILED, payload: {error}});
+    //     }
+    // }
 
-    const getMovies = useCallback<FetchMovieFn>(getMoviesCallback, []);
-    const value = { movies, fetching, fetchingError, getMovies};
+    // const getMovies = useCallback<FetchMovieFn>(getMoviesCallback, []);
+    const value = { movies, fetching, fetchingError};
     log('returns');
     return (
         <MovieContext.Provider value={value}>

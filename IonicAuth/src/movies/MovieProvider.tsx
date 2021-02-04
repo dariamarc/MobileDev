@@ -53,7 +53,7 @@ const FETCH_MOVIES_FAILED = 'FETCH_MOVIES_FAILED';
 const SAVE_MOVIE_STARTED = 'SAVE_MOVIE_STARTED';
 const SAVE_MOVIE_SUCCEEDED = 'SAVE_MOVIE_SUCCEEDED';
 const SAVE_MOVIE_FAILED = 'SAVE_MOVIE_FAILED';
-const UPDATED_MOVIE_ON_SERVER = 'UPDATED+MOVIE_ON_SERVER';
+const UPDATED_MOVIE_ON_SERVER = 'UPDATED_MOVIE_ON_SERVER';
 
 
 const reducer: (state: MoviesState, action: ActionProps) => MoviesState =
@@ -121,7 +121,7 @@ export const MovieProvider: React.FC<MovieProviderProps> = ({children}) => {
 
     function getMoviesEffect() {
         let canceled = false;
-        fetchMovies().catch(() => {console.log("EROARE IN PROMISE"); getLocalData();});
+        fetchMovies().catch(() => { getLocalData();});
         return () => {
             canceled = true;
         }
@@ -160,7 +160,6 @@ export const MovieProvider: React.FC<MovieProviderProps> = ({children}) => {
     }
 
     async function getLocalData() {
-        console.log("IN GET LOCAL DATA!!!!!!!");
         let localMovies = await Storage.keys()
             .then(function (localStorageData) {
                 for (let i = 0; i < localStorageData.keys.length; i++)
